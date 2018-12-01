@@ -4,8 +4,8 @@
 
 'use strict';
 
-chrome.runtime.onInstalled.addListener(function() {
-  /*chrome.storage.sync.set({color: '#3aa757'}, function() {
+/*chrome.runtime.onInstalled.addListener(function() {
+chrome.storage.sync.set({color: '#3aa757'}, function() {
     console.log('The color is green.');
   });
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
@@ -15,9 +15,17 @@ chrome.runtime.onInstalled.addListener(function() {
       })],
       actions: [new chrome.declarativeContent.ShowPageAction()]
     }]);
-  // })*/
+  // })
+  console.log('hi');
+
+  
+});*/
+
+//sends an alert with the current url
+chrome.browserAction.onClicked.addListener(function(tab) {
   chrome.tabs.getSelected(null,function(tab) {
     var tablink = tab.url;
+    alert(tablink);
     console.log(tablink);
 });
 });
