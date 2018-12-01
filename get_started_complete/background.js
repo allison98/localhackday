@@ -37,6 +37,14 @@ chrome.runtime.onInstalled.addListener(function() {
       })],
       actions: [new chrome.declarativeContent.ShowPageAction()]
     }]);
+/*
+    //sends an alert with the current url
+chrome.browserAction.onClicked.addListener(function(tabs) {
+  chrome.tabs.query({currentWindow: true}, function(tabs){
+    tabs.forEach(function(tab) {
+      alert(tab.url);
+    });
   });
 
 });
+*/
