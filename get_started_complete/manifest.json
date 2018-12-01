@@ -1,12 +1,23 @@
 {
-  "name": "Getting Started Example",
+  "name": "Put it in my tab",
   "version": "1.0",
-  "description": "Build an Extension!",
+  "description": "Build an Extension to grab all the relevant tabs!",
   "permissions": ["activeTab", "declarativeContent", "storage"],
   "options_page": "options.html",
   "background": {
     "scripts": ["background.js"],
     "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "browser_action": {
+    "default_icon": "icon.png"
   },
   "page_action": {
     "default_popup": "popup.html",
