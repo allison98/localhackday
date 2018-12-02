@@ -1,21 +1,15 @@
-// Copyright 2018 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+document.addEventListener('DOMContentLoaded', documentEvents  , false);
 
-'use strict';
+function myAction(input) { 
+    console.log("input value is : " + input.value);
+    alert("The entered data is : " + input.value);
+    return input
+}
 
-let changeColor = document.getElementById('changeColor');
-
-chrome.storage.sync.get('color', function(data) {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute('value', data.color);
-});
-
-changeColor.onclick = function(element) {
-  let color = element.target.value;
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.executeScript(
-        tabs[0].id,
-        {code: 'document.body.style.backgroundColor = "' + color + '";'});
+function documentEvents() {    
+  document.getElementById('ok_btn').addEventListener('click', 
+    function() { myAction(document.getElementById('name_textbox'));
   });
-};
+
+  // you can add listeners for other objects ( like other buttons ) here 
+}

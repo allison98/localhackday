@@ -1,9 +1,10 @@
 // Copyright 2018 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
+require 'popup.js';
 
 'use strict';
-
+/*
 chrome.runtime.onInstalled.addListener(function() {
   // chrome.storage.sync.set({color: '#3aa757'}, function() {
   //   console.log('The color is green.');
@@ -21,25 +22,16 @@ chrome.runtime.onInstalled.addListener(function() {
             chrome.tabs.create({"url": openTab});
         })
     });
+  }
+*/
+ 
 
     //sends an alert with the current url
-      chrome.tabs.getSelected(null, function (tab) {
-          let tablink = tab.url;
-          alert(tablink);
-          console.log(tablink);
-      });
-  });
-
-  chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-    chrome.declarativeContent.onPageChanged.addRules([{
-      conditions: [new chrome.declarativeContent.PageStateMatcher({
-        pageUrl: {hostEquals: 'developer.chrome.com'},
-      })],
-      actions: [new chrome.declarativeContent.ShowPageAction()]
-    }]);
-/*
-    //sends an alert with the current url
-chrome.browserAction.onClicked.addListener(function(tabs) {
+chrome.runtime.onInstalled.addListener(function() {
+  let keyword = myAction();
+  alert(keyword);
+  chrome.browserAction.onClicked.addListener(function(tabs) {
+  
   chrome.tabs.query({currentWindow: true}, function(tabs){
     tabs.forEach(function(tab) {
       alert(tab.url);
@@ -47,4 +39,4 @@ chrome.browserAction.onClicked.addListener(function(tabs) {
   });
 
 });
-*/
+}
