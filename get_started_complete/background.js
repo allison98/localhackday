@@ -37,7 +37,7 @@ chrome.runtime.onInstalled.addListener(function() {
       })],
       actions: [new chrome.declarativeContent.ShowPageAction()]
     }]);
-/*
+
     //sends an alert with the current url
 chrome.browserAction.onClicked.addListener(function(tabs) {
   chrome.tabs.query({currentWindow: true}, function(tabs){
@@ -45,6 +45,16 @@ chrome.browserAction.onClicked.addListener(function(tabs) {
       alert(tab.url);
     });
   });
+ });
+ 
+    //closes tab(s) with the given url pattern
+chrome.browser.onClicked.addListener(function(tabs) {
+  chrome.tabs.query({url: ["https://*.facebook.com/*"]}, function(tabs){
+	tabs.forEach.(function(closeTab){
+	 chrome.tabs.remove({closeTab.id});
+	 });
+  });
+ });
 
-});
-*/
+
+
